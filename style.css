@@ -8,6 +8,6 @@ article {
     display: grid;
     grid-template-rows: subgrid;
     grid-row: span 4;
-    background-color: #eee;
+    background-color: beige;
     padding: 1rem;
 }
