@@ -1,0 +1,13 @@
+.produktliste {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+article {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    background-color: #eee;
+    padding: 1rem;
+}

@@ -15,7 +15,7 @@ const biler = [{
 {
     pris: 2000,
     model: "Basic",
-    brand: "Lade",
+    brand: "Lada",
     farve: "gul",
     udstyr: ["rat", "sæder"]
 }];
