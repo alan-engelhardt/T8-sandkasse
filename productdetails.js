@@ -5,6 +5,9 @@ const endpoint = `https://kea-alt-del.dk/t7/api/products/${id}`;
 
 const product = document.querySelector("#product");
 
+const backbutton = document.querySelector("#backbutton");
+backbutton.addEventListener("click", () => history.back());
+
 fetch(endpoint).then(res => res.json()).then(visData);
 
 function visData(element) {

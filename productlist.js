@@ -1,6 +1,6 @@
 const endpoint = "https://kea-alt-del.dk/t7/api/products?limit=20";
 
-const produktliste = document.querySelector(".produktliste");
+const produktliste = document.querySelector("#produktliste");
 
 fetch(endpoint).then(res => res.json()).then(visData);
 
