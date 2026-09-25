@@ -1,4 +1,7 @@
-const endpoint = "https://kea-alt-del.dk/t7/api/products?limit=20";
+const cat = new URLSearchParams(window.location.search).get("cat"); // Gem værdien af URL-parameteren i cat
+const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${cat}`; // Tilpas endpoint til valgt kategori
+
+document.querySelector("h2").textContent = cat; // Vis bruger hvilken kategori der vises
 
 const produktliste = document.querySelector("#produktliste");
 
