@@ -21,7 +21,7 @@ function visData(json) {
                 ${element.discount
                 ?
                 `<p class="tilbudslabel">-${element.discount}%</p>
-                 <p>Før kr. ${element.price},- <span>Nu ${tilbudspris},-</span></p> `
+                 <p>Før kr. ${element.price},- <span class="tilbudspris">Nu ${tilbudspris},-</span></p> `
                 :
                 `<p> kr. ${element.price}, - </p> `
             }
