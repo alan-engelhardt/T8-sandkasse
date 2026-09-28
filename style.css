@@ -36,13 +36,18 @@ a {
 }
 
 #produktliste {
-    article {
-        position: relative;
-    }
-
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
+
+    a:hover {
+        translate: 0 -.3rem;
+        transition: .2s;
+    }
+
+    article {
+        position: relative;
+    }
 
     .udsolgt {
         filter: grayscale(1);

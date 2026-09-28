@@ -16,11 +16,16 @@ function visData(json) {
             <article class="card">
             <img src=https://kea-alt-del.dk/t7/images/webp/640/${element.id}.webp alt="produktbillede" />
             <div>
-            <h2>${element.productdisplayname}</h2>
-            <h3>${element.brandname}</h3>
-            ${element.discount ? `<p class="tilbudslabel">${element.discount}%</p>` : ""}
-            ${element.discount ? `<p>Nu kr. ${tilbudspris},- ${element.discount}% <span>(før ${element.price},-)</span></p>` : `<p>kr. ${element.price},- </p>`}
-            <p>${element.gender}</p>
+                <h2>${element.productdisplayname}</h2>
+                <h3>${element.brandname}</h3>
+                ${element.discount
+                ?
+                `<p class="tilbudslabel">-${element.discount}%</p>
+                 <p>Før kr. ${element.price}, - Nu ${tilbudspris},-</p> `
+                :
+                `<p> kr. ${element.price}, - </p> `
+            }
+                <p>${element.gender}</p>
             </div>
         </article>
         </a>`
