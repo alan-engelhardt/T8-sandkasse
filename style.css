@@ -36,14 +36,28 @@ a {
 }
 
 #produktliste {
+    article {
+        position: relative;
+    }
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
 
     .udsolgt {
         filter: grayscale(1);
-        opacity: .5;
+        opacity: .8;
         pointer-events: none;
+    }
+
+    .tilbudslabel {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 1rem;
+        background-color: yellow;
+        color: black;
+        rotate: -10deg;
     }
 
     h2,
