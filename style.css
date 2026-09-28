@@ -80,6 +80,11 @@ a {
         grid-row: span 5;
         background-color: light-dark(#efedea, #466452);
 
+        span {
+            background-color: yellow;
+            color: #223a2c;
+        }
+
         div {
             padding: 1rem;
         }
