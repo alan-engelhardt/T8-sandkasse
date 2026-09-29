@@ -5,6 +5,12 @@ document.querySelector("h2").textContent = cat; // Vis bruger hvilken kategori d
 
 const produktliste = document.querySelector("#produktliste");
 
+document.querySelectorAll("#filtre button").forEach(knap => knap.addEventListener("click", filtrer));
+
+function filtrer(e) {
+    console.log(e.target.textContent);
+}
+
 fetch(endpoint).then(res => res.json()).then(visData);
 
 function visData(json) {
