@@ -9,16 +9,15 @@ document.querySelectorAll("#filtre button").forEach(knap => knap.addEventListene
 
 let alleData, udsnit;
 
-fetch(endpoint).
-    then(res => res.json()).
-    then((data) => {
+fetch(endpoint)
+    .then(res => res.json())
+    .then((data) => {
         alleData = udsnit = data;
         visData(data);
     });
 
 function filtrer(e) {
-    console.log(e.target.textContent); // hvad står der i den knap der blev klikket på?
-    const valgt = e.target.textContent;
+    const valgt = e.target.textContent; // hvad står der i den knap der blev klikket på?
     if (valgt == "Alle") {
         udsnit = alleData;
     } else {
@@ -27,7 +26,10 @@ function filtrer(e) {
     visData(udsnit);
 }
 
+const visantal = document.querySelector("#filtre span");
+
 function visData(json) {
+    visantal.textContent = json.length;
     //console.log(json);
     produktliste.innerHTML = "";
     json.forEach(element => {
