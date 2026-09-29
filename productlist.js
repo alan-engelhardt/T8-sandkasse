@@ -8,10 +8,10 @@ const produktliste = document.querySelector("#produktliste");
 document.querySelectorAll("#filtre button").forEach(knap => knap.addEventListener("click", filtrer));
 
 function filtrer(e) {
-    console.log(e.target.textContent);
+    console.log(e.target.textContent); // hvad står der i den knap der blev klikket på?
 }
 
-fetch(endpoint).then(res => res.json()).then(visData);
+fetch(endpoint).then(res => res.json()).then(data => visData(data));
 
 function visData(json) {
     console.log(json);
