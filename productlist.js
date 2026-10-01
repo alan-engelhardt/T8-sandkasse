@@ -1,23 +1,25 @@
 const cat = new URLSearchParams(window.location.search).get("cat"); // Gem værdien af URL-parameteren i cat
-const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${cat}`; // Tilpas endpoint til valgt kategori
-
-document.querySelector("h2").textContent = cat; // Vis bruger hvilken kategori der vises
-
+const endpoint = `https://kea-alt-del.dk/t7/api/products?category=${cat}&limit=30`; // Tilpas endpoint til valgt kategori
+const visantal = document.querySelector("#filtre span");
 const produktliste = document.querySelector("#produktliste");
-
-document.querySelectorAll("#filtre button").forEach(knap => knap.addEventListener("click", filtrer));
 
 let alleData, udsnit;
 
-fetch(endpoint)
-    .then(res => res.json())
-    .then((data) => {
-        alleData = udsnit = data;
-        visData(data);
-    });
+document.querySelector("h2").textContent = cat; // Vis bruger hvilken kategori der vises
+document.querySelectorAll("#filtre button").forEach(knap => knap.addEventListener("click", filtrer));
+document.querySelectorAll("#sortering button").forEach(knap => knap.addEventListener("click", sorter));
 
-function filtrer(e) {
-    const valgt = e.target.textContent; // hvad står der i den knap der blev klikket på?
+function hentData() {
+    fetch(endpoint)
+        .then(res => res.json())
+        .then((data) => {
+            alleData = udsnit = data;
+            visData(data);
+        });
+}
+
+function filtrer(event) {
+    const valgt = event.target.textContent; // hvad står der i den knap der blev klikket på?
     if (valgt == "Alle") {
         udsnit = alleData;
     } else {
@@ -26,7 +28,21 @@ function filtrer(e) {
     visData(udsnit);
 }
 
-const visantal = document.querySelector("#filtre span");
+function sorter(event) {
+    const valgt = event.target.textContent;
+    console.log(valgt);
+    if (valgt == "Pris lav-høj") {
+        udsnit.sort((a, b) => (a.price - b.price));
+    } else if (valgt == "Pris høj-lav") {
+        udsnit.sort((a, b) => (b.price - a.price));
+    } else if (valgt == "A-Z") {
+        udsnit.sort((a, b) => a.productdisplayname.localeCompare(b.productdisplayname));
+    } else if (valgt == "Z-A") {
+        udsnit.sort((a, b) => b.productdisplayname.localeCompare(a.productdisplayname));
+    }
+    visData(udsnit);
+}
+
 
 function visData(json) {
     visantal.textContent = json.length;
@@ -54,3 +70,5 @@ function visData(json) {
         </a>`
     });
 }
+
+hentData();
